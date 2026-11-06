@@ -1,0 +1,24 @@
+НейроБукварь — многостраничная версия сайта (v15, для GitHub Pages)
+====================================================================
+Адрес сайта: https://as-2603.github.io/neurobukvar/
+
+ЧТО ВНУТРИ
+  index.html и ещё 11 страниц (.html) — по одной на каждый раздел.
+  o-proekte.html      — страница «О проекте».
+  404.html            — страница «не найдено» (GitHub Pages показывает её сам).
+  style.css, app.js, search-data.js — общие стили, скрипт и данные поиска.
+  fonts/, img/        — шрифты и картинки.
+  favicon.svg, apple-touch-icon.png — значок сайта (знак-мозг).
+  og.png              — картинка для превью ссылки в соцсетях и мессенджерах.
+  sitemap.xml, robots.txt — подсказки для Яндекса и Google.
+  README.md           — описание репозитория для GitHub (на сайте не показывается).
+  .nojekyll           — файл-метка для GitHub Pages (НЕ УДАЛЯТЬ).
+  fonts-licenses/     — лицензии шрифтов (НЕ УДАЛЯТЬ: условие лицензии OFL).
+
+КАК ВЫЛОЖИТЬ НА GITHUB PAGES
+  1. Создайте репозиторий neurobukvar (Public) под аккаунтом AS-2603; галочку «Add README» выключите (README.md уже есть в папке).
+  2. Загрузите ВСЁ содержимое этой папки в корень репозитория
+     (Add file → Upload files; файл .nojekyll тоже; если он не виден в проводнике — включите показ скрытых файлов).
+  3. Settings → Pages → Build and deployment → Source: «Deploy from a branch»,
+     Branch: main, папка «/ (root)» → Save.
+  4. Через 1–3 минуты сайт откроется по адресу https://as-2603.github.io/neurobukvar/

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://as-2603.github.io/neurobukvar/sitemap.xml

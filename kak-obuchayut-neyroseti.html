@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Как обучают нейросети — НейроБукварь</title>
+    <!-- PROTECTED: meta type -->
+    <meta name="type" value="app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f8fafc">
+    <meta name="description" content="Как обучают нейросети простыми словами: шаги обучения, способы обучения, типичные проблемы, проверка результата, предобучение и дообучение.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://as-2603.github.io/neurobukvar/kak-obuchayut-neyroseti.html">
+    <meta property="og:site_name" content="НейроБукварь">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:title" content="Как обучают нейросети — НейроБукварь">
+    <meta property="og:description" content="Как обучают нейросети простыми словами: шаги обучения, способы обучения, типичные проблемы, проверка результата, предобучение и дообучение.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://as-2603.github.io/neurobukvar/kak-obuchayut-neyroseti.html">
+    <meta property="og:image" content="https://as-2603.github.io/neurobukvar/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Как обучают нейросети — НейроБукварь">
+    <meta name="twitter:description" content="Как обучают нейросети простыми словами: шаги обучения, способы обучения, типичные проблемы, проверка результата, предобучение и дообучение.">
+    <meta name="twitter:image" content="https://as-2603.github.io/neurobukvar/og.png">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="preload" href="fonts/Golos-Text_Regular.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="fonts/Manrope.woff" as="font" type="font/woff" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <script>try{var t=localStorage.getItem('np_theme');if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+    
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как обучают нейросети", "description": "Как обучают нейросети простыми словами: шаги обучения, способы обучения, типичные проблемы, проверка результата, предобучение и дообучение.", "inLanguage": "ru", "dateModified": "2026-11-05", "mainEntityOfPage": "https://as-2603.github.io/neurobukvar/kak-obuchayut-neyroseti.html", "image": "https://as-2603.github.io/neurobukvar/og.png", "publisher": {"@type": "Organization", "name": "НейроБукварь", "url": "https://as-2603.github.io/neurobukvar/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "НейроБукварь", "item": "https://as-2603.github.io/neurobukvar/"}, {"@type": "ListItem", "position": 2, "name": "Как обучают нейросети", "item": "https://as-2603.github.io/neurobukvar/kak-obuchayut-neyroseti.html"}]}</script>
+</head>
+<body data-p="4">
+<a class="skip" href="#main" id="skip">Перейти к содержанию</a>
+
+<!-- Иконки (спрайт) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M12 5a3 3 0 0 0-5.6-1.4A3 3 0 0 0 4 9a3 3 0 0 0 .5 5.5A3.5 3.5 0 0 0 12 19"/><path d="M12 5a3 3 0 0 1 5.6-1.4A3 3 0 0 1 20 9a3 3 0 0 1-.5 5.5A3.5 3.5 0 0 1 12 19"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+<symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+<symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+<symbol id="i-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></symbol>
+<symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4M12 17.5h.01"/></symbol>
+<symbol id="i-nodes" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M11 7.3 6 15.7M13 7.3l5 8.4M7.5 18h9"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-sitemap" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-4h12v4"/></symbol>
+<symbol id="i-cap" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></symbol>
+<symbol id="i-gears" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></symbol>
+<symbol id="i-robot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V5M9 13h.01M15 13h.01M9 17h6"/><circle cx="12" cy="3.5" r="1"/></symbol>
+<symbol id="i-rotate" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5"/></symbol>
+<symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="1.5"/><path d="m21 15-5-5L5 21"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h14l-3-3M20 16H6l3 3"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M6 21h12M5 7h14"/><path d="M5 7 2 14a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h10a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M4 16a4 4 0 0 1 4-4h10"/></symbol>
+<symbol id="i-memory" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 16l9 5 9-5"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="i-bookopen" viewBox="0 0 24 24"><path d="M2 5c3-1 7-1 10 2 3-3 7-3 10-2v14c-3-1-7-1-10 2-3-3-7-3-10-2z"/><path d="M12 7v14"/></symbol>
+</svg>
+
+<header>
+    <div class="bar">
+        <a class="logo" href="index.html" aria-label="НейроБукварь — на главную"><svg class="ic" aria-hidden="true"><use href="#i-brain"/></svg><span>НейроБукварь</span></a>
+        <div class="search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><input id="q" type="search" placeholder="Поиск по статьям..." aria-label="Поиск по статьям" autocomplete="off"></div>
+        <button id="theme" class="theme-btn" aria-label="Переключить тему" title="Переключить тему"></button>
+    </div>
+</header>
+<div class="wrap">
+    <nav aria-label="Разделы">
+        <h4>Разделы</h4>
+        <div class="prog" id="prog"></div>
+        <div id="menu"><a href="index.html"><span>1</span>Что такое нейросеть?</a><a href="neyroset-i-iskusstvennye-neyrony.html"><span>2</span>Нейросеть и искусственные нейроны</a><a href="istoriya-neyrosetey.html"><span>3</span>Как появилась и развивалась нейросеть</a><a href="vidy-neyrosetey.html"><span>4</span>Виды нейросетей</a><a href="kak-obuchayut-neyroseti.html" class="active" aria-current="page"><span>5</span>Как обучают нейросети</a><a href="kak-rabotaet-neyroset-i-kak-s-ney-rabotat.html"><span>6</span>Как работает нейросеть и как с ней работать</a><a href="chat-bot-i-ii-agent.html"><span>7</span>Чат-бот и ИИ-агент</a><a href="bezopasnost-i-privatnost.html"><span>8</span>Безопасность и приватность</a><a href="etika-i-avtorskie-prava.html"><span>9</span>Этика и авторские права</a><a href="slovar-terminov.html"><span>10</span>Словарь терминов</a><a href="chastye-voprosy.html"><span>11</span>Частые вопросы</a><a href="chto-pochitat-dalshe.html"><span>12</span>Что почитать дальше</a></div>
+    </nav>
+    <main id="main" tabindex="-1"><div class="crumbs">НейроБукварь / Раздел 5</div><h1>Как обучают нейросети</h1><p class="lead">Обучение — это подбор правильных весов. Сеть много раз пробует ответить, ошибается и понемногу исправляется.</p>
+<div class="toc"><b>Содержание</b><ol><li><a href="#e1">Шаги обучения</a></li><li><a href="#e2">Способы обучения</a></li><li><a href="#e3">Типичные проблемы</a></li><li><a href="#e4">Как проверяют, что сеть научилась</a></li><li><a href="#e5">Предобучение и дообучение</a></li></ol></div>
+<h2 id="e1">Шаги обучения</h2>
+<p>Если в классическом программировании всё очень упорядочено (разработчик пишет инструкцию, программа выдаёт заданный результат), то с нейросетями немного сложнее. Их невозможно запрограммировать один раз и навсегда.</p>
+<p><b>Их обучают на примерах.</b> Сначала собирают большой набор данных — картинки, тексты и т. п. — и готовят его: очищают, приводят к единому формату. Если нужно, данные размечают: проставляют правильные ответы, например «это кошка», «это собака».</p>
+<p><b>Потом нейросеть прогоняет данные через себя и выдаёт свой вариант ответа</b> <i>(случайные веса не позволяют дать точное предсказание)</i>. Пока веса случайные, связи между искусственными нейронами не сформированы. Система сравнивает ответ с правильным и считает ошибку — насколько прогноз не совпал с эталоном. Дальше запускается <b>обратное распространение ошибки</b>: алгоритм выясняет, какие настройки (веса связей между нейронами и смещения узлов) сильнее всего повлияли на промах, и чуть-чуть их подкручивает, чтобы в следующий раз ошибка была меньше.</p>
+<p><b>Этот цикл повторяют тысячи и миллионы раз на разных примерах.</b> Веса постепенно выстраиваются так, что сеть начинает уверенно угадывать нужные результаты <i>(сама нейросеть не «знает» факты, как энциклопедия, и не «знает правду»: она предсказывает и генерирует наиболее вероятный и правдоподобный ответ)</i>.</p>
+<p><b>В конце модель проверяют на новых данных, которых она раньше не видела</b>, чтобы убедиться, что она не просто заучила примеры, а реально научилась находить закономерности.</p>
+<figure class="fig"><div class="t">Один шаг обучения</div>
+<div class="fl">Вперёд</div><div class="flow"><span class="n">Пример из данных</span><span class="a" aria-hidden="true">→</span><span class="n">Сеть даёт ответ</span><span class="a" aria-hidden="true">→</span><span class="n">Сравнение с правильным</span><span class="a" aria-hidden="true">→</span><span class="n">Ошибка</span></div>
+<div class="fl">Назад</div><div class="flow"><span class="n">Ошибка идёт назад по слоям</span><span class="a" aria-hidden="true">→</span><span class="n">Веса слегка меняются</span><span class="a" aria-hidden="true">→</span><span class="n">Следующий пример</span></div>
+<p class="cap">Так повторяется миллионы раз, пока ошибка не станет достаточно маленькой.</p></figure>
+<div class="box"><b>Аналогия:</b> вы настраиваете громкость на ощупь: слишком тихо — добавили, слишком громко — убавили. Так и сеть шаг за шагом подбирает веса.</div>
+<div class="box"><b>Для понимания:</b> построением архитектуры, обучением, визуализацией и совершенствованием уже имеющихся систем занимаются разработчики нейросетей, а не обычный пользователь.</div>
+<h2 id="e2">Способы обучения</h2>
+<div class="tw"><table><tr><th>Способ</th><th>Суть</th></tr>
+<tr><td>С учителем</td><td>У каждого примера есть правильный ответ.</td></tr>
+<tr><td>Без учителя</td><td>Ответов нет. Сеть сама ищет похожие группы в данных.</td></tr>
+<tr><td>С подкреплением</td><td>Сеть получает «награду» за хорошие действия и «штраф» за плохие, как в игре.</td></tr>
+<tr><td>Самообучение</td><td>Сеть угадывает пропущенные части данных, например следующее слово в тексте.</td></tr></table></div>
+<h2 id="e3">Типичные проблемы</h2>
+<ul><li><b>Переобучение.</b> Сеть зазубрила примеры, но не поняла суть. Как школьник, выучивший ответы, но не тему.</li><li><b>Плохие данные.</b> Если примеры с ошибками или однобокие, сеть научится ошибаться.</li><li><b>Дороговизна.</b> Большие модели учат неделями или месяцами на тысячах видеокарт.</li></ul>
+<h2 id="e4">Как проверяют, что сеть научилась</h2>
+<p>Данные обычно делят на три части:</p>
+<ul>
+<li><b>Обучающая выборка</b> — на ней сеть учится и подбирает веса;</li>
+<li><b>Проверочная выборка</b> — на ней в ходе обучения следят, не началось ли переобучение, и подбирают настройки;</li>
+<li><b>Тестовая выборка</b> — сеть её никогда не видела; в конце на ней честно оценивают итоговое качество.</li>
+</ul>
+<p>Один полный проход по обучающим данным называют <b>эпохой</b>. Обычно сети нужно множество эпох, чтобы научиться.</p>
+<div class="box"><b>Аналогия:</b> обучающая выборка — это учебник и задачи с ответами, проверочная — пробная контрольная, тестовая — экзамен с новыми заданиями.</div>
+<h2 id="e5">Предобучение и дообучение</h2>
+<p>Большие модели учат в два этапа. Сначала идёт долгое <b>предобучение</b> на огромных наборах данных: модель получает общие знания о языке и мире. Затем её можно <b>дообучить</b> на меньшем наборе — например, научить стилю компании, специальным терминам или формату ответов. Это намного дешевле, чем обучать модель с нуля.</p>
+<p>Современные чат-боты проходят и дополнительное дообучение, в том числе на оценках людей: люди сравнивают ответы, а модель учится выдавать более полезные и безопасные.</p>
+<section class="quiz" aria-label="Проверьте себя"><h2>Проверьте себя</h2><div class="qq"><p class="qt">1. Что делает метод обратного распространения ошибки?</p><div class="qo"><button type="button">Стирает все веса и начинает заново</button><button type="button" data-ok="1">Помогает понять, как изменить веса, чтобы ошибка уменьшилась</button><button type="button">Собирает новые данные из интернета</button></div><p class="qe" hidden>Метод вычисляет вклад каждого веса в ошибку, а затем веса слегка корректируют.</p></div><div class="qq"><p class="qt">2. Что такое переобучение?</p><div class="qo"><button type="button" data-ok="1">Сеть зазубрила примеры, но плохо работает на новых</button><button type="button">Сеть учится слишком быстро</button><button type="button">Сеть обучают на двух компьютерах сразу</button></div><p class="qe" hidden>Переобученная сеть хорошо знает обучающие примеры и плохо справляется с новыми данными.</p></div><div class="qq"><p class="qt">3. Зачем нужна тестовая выборка?</p><div class="qo"><button type="button" data-ok="1">Чтобы честно оценить качество на данных, которых сеть не видела</button><button type="button">Чтобы увеличить обучающую выборку</button><button type="button">Чтобы ускорить обучение</button></div><p class="qe" hidden>Тестовые данные сеть не видела при обучении, поэтому оценка получается честной.</p></div><p class="qs" aria-live="polite"></p></section><button type="button" class="readbtn" onclick="toggleRead(4)" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Отметить раздел прочитанным</span></button>
+ <div class="pager"><a href="vidy-neyrosetey.html" rel="prev"><span><svg class="ic" aria-hidden="true"><use href="#i-left"/></svg> Виды нейросетей</span></a>
+ <a href="kak-rabotaet-neyroset-i-kak-s-ney-rabotat.html" rel="next"><span>Как работает нейросеть и как с ней работать <svg class="ic" aria-hidden="true"><use href="#i-right"/></svg></span></a></div></main>
+</div>
+<footer id="foot">НейроБукварь — нейросети и ИИ простыми словами<br><a class="lnk" href="o-proekte.html">О проекте</a></footer>
+<button id="top" class="toTop" aria-label="Наверх" title="Наверх"><svg class="ic" aria-hidden="true"><use href="#i-up"/></svg></button>
+
+<!-- Image Zoom Overlay -->
+<div id="imgOverlay" class="img-overlay">
+  <div class="img-overlay-content">
+    <img id="imgOverlayImg" class="img-overlay-img" alt="">
+    <button class="img-overlay-close" aria-label="Закрыть"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+</div>
+<script src="search-data.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>

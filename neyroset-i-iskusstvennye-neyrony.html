@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Нейросеть и искусственные нейроны — НейроБукварь</title>
+    <!-- PROTECTED: meta type -->
+    <meta name="type" value="app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f8fafc">
+    <meta name="description" content="Что такое искусственный нейрон, чем он отличается от нейросети и как устроены входной, скрытые и выходной слои. Можно попробовать нейрон в интерактивной демонстрации.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://as-2603.github.io/neurobukvar/neyroset-i-iskusstvennye-neyrony.html">
+    <meta property="og:site_name" content="НейроБукварь">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:title" content="Нейросеть и искусственные нейроны — НейроБукварь">
+    <meta property="og:description" content="Что такое искусственный нейрон, чем он отличается от нейросети и как устроены входной, скрытые и выходной слои. Можно попробовать нейрон в интерактивной демонстрации.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://as-2603.github.io/neurobukvar/neyroset-i-iskusstvennye-neyrony.html">
+    <meta property="og:image" content="https://as-2603.github.io/neurobukvar/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Нейросеть и искусственные нейроны — НейроБукварь">
+    <meta name="twitter:description" content="Что такое искусственный нейрон, чем он отличается от нейросети и как устроены входной, скрытые и выходной слои. Можно попробовать нейрон в интерактивной демонстрации.">
+    <meta name="twitter:image" content="https://as-2603.github.io/neurobukvar/og.png">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="preload" href="fonts/Golos-Text_Regular.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="fonts/Manrope.woff" as="font" type="font/woff" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <script>try{var t=localStorage.getItem('np_theme');if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+    
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Нейросеть и искусственные нейроны", "description": "Что такое искусственный нейрон, чем он отличается от нейросети и как устроены входной, скрытые и выходной слои. Можно попробовать нейрон в интерактивной демонстрации.", "inLanguage": "ru", "dateModified": "2026-11-05", "mainEntityOfPage": "https://as-2603.github.io/neurobukvar/neyroset-i-iskusstvennye-neyrony.html", "image": "https://as-2603.github.io/neurobukvar/og.png", "publisher": {"@type": "Organization", "name": "НейроБукварь", "url": "https://as-2603.github.io/neurobukvar/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "НейроБукварь", "item": "https://as-2603.github.io/neurobukvar/"}, {"@type": "ListItem", "position": 2, "name": "Нейросеть и искусственные нейроны", "item": "https://as-2603.github.io/neurobukvar/neyroset-i-iskusstvennye-neyrony.html"}]}</script>
+</head>
+<body data-p="1">
+<a class="skip" href="#main" id="skip">Перейти к содержанию</a>
+
+<!-- Иконки (спрайт) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M12 5a3 3 0 0 0-5.6-1.4A3 3 0 0 0 4 9a3 3 0 0 0 .5 5.5A3.5 3.5 0 0 0 12 19"/><path d="M12 5a3 3 0 0 1 5.6-1.4A3 3 0 0 1 20 9a3 3 0 0 1-.5 5.5A3.5 3.5 0 0 1 12 19"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+<symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+<symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+<symbol id="i-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></symbol>
+<symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4M12 17.5h.01"/></symbol>
+<symbol id="i-nodes" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M11 7.3 6 15.7M13 7.3l5 8.4M7.5 18h9"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-sitemap" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-4h12v4"/></symbol>
+<symbol id="i-cap" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></symbol>
+<symbol id="i-gears" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></symbol>
+<symbol id="i-robot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V5M9 13h.01M15 13h.01M9 17h6"/><circle cx="12" cy="3.5" r="1"/></symbol>
+<symbol id="i-rotate" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5"/></symbol>
+<symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="1.5"/><path d="m21 15-5-5L5 21"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h14l-3-3M20 16H6l3 3"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M6 21h12M5 7h14"/><path d="M5 7 2 14a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h10a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M4 16a4 4 0 0 1 4-4h10"/></symbol>
+<symbol id="i-memory" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 16l9 5 9-5"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="i-bookopen" viewBox="0 0 24 24"><path d="M2 5c3-1 7-1 10 2 3-3 7-3 10-2v14c-3-1-7-1-10 2-3-3-7-3-10-2z"/><path d="M12 7v14"/></symbol>
+</svg>
+
+<header>
+    <div class="bar">
+        <a class="logo" href="index.html" aria-label="НейроБукварь — на главную"><svg class="ic" aria-hidden="true"><use href="#i-brain"/></svg><span>НейроБукварь</span></a>
+        <div class="search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><input id="q" type="search" placeholder="Поиск по статьям..." aria-label="Поиск по статьям" autocomplete="off"></div>
+        <button id="theme" class="theme-btn" aria-label="Переключить тему" title="Переключить тему"></button>
+    </div>
+</header>
+<div class="wrap">
+    <nav aria-label="Разделы">
+        <h4>Разделы</h4>
+        <div class="prog" id="prog"></div>
+        <div id="menu"><a href="index.html"><span>1</span>Что такое нейросеть?</a><a href="neyroset-i-iskusstvennye-neyrony.html" class="active" aria-current="page"><span>2</span>Нейросеть и искусственные нейроны</a><a href="istoriya-neyrosetey.html"><span>3</span>Как появилась и развивалась нейросеть</a><a href="vidy-neyrosetey.html"><span>4</span>Виды нейросетей</a><a href="kak-obuchayut-neyroseti.html"><span>5</span>Как обучают нейросети</a><a href="kak-rabotaet-neyroset-i-kak-s-ney-rabotat.html"><span>6</span>Как работает нейросеть и как с ней работать</a><a href="chat-bot-i-ii-agent.html"><span>7</span>Чат-бот и ИИ-агент</a><a href="bezopasnost-i-privatnost.html"><span>8</span>Безопасность и приватность</a><a href="etika-i-avtorskie-prava.html"><span>9</span>Этика и авторские права</a><a href="slovar-terminov.html"><span>10</span>Словарь терминов</a><a href="chastye-voprosy.html"><span>11</span>Частые вопросы</a><a href="chto-pochitat-dalshe.html"><span>12</span>Что почитать дальше</a></div>
+    </nav>
+    <main id="main" tabindex="-1"><div class="crumbs">НейроБукварь / Раздел 2</div><h1>Нейросеть и искусственные нейроны</h1><p class="lead">Что такое искусственный нейрон, чем он отличается от нейросети и как устроена основная структура сети.</p>
+<div class="toc"><b>Содержание</b><ol><li><a href="#b1">В чём различие: нейрон и нейросеть</a></li><li><a href="#b2">Основная структура сети</a></li><li><a href="#b3">Ключевые понятия</a></li><li><a href="#b4">Аналогия и пример</a></li><li><a href="#b5">Попробуйте сами: нейрон-«гулялка»</a></li></ol></div>
+<h2 id="b1">В чём различие: нейрон и нейросеть</h2>
+<p>Представьте нейрон как одну маленькую кнопку: вы нажимаете на неё (вход), она «решает» — да или нет (активация) — и передаёт сигнал дальше (выход).</p>
+<p>А нейросеть — это целая комната, где таких кнопок тысячи, и они соединены между собой. Сигнал бежит от одной кнопки к другой, на каждом этапе что-то «решается», и в конце комната выдаёт ответ — например, «на фото кот» или «это спам».</p>
+<p>Одна кнопка сама по себе почти ничего не умеет. А вот когда их много и они связаны — получается «мозг», который учится и распознаёт.</p>
+<h2 id="b2">Основная структура сети</h2>
+<ul>
+<li><b>Входной слой</b> — принимает данные извне (в виде чисел) и передаёт их дальше. Сам он почти ничего не вычисляет: основная работа начинается в следующих слоях.</li>
+<li><b>Скрытые слои</b> (один или несколько) — главная часть сети. Именно здесь происходят распознавание и обработка данных. Обычно чем больше скрытых слоёв, тем более сложные закономерности сеть способна уловить, но лучше она работает не всегда: слишком большая сеть может «зазубривать» примеры.</li>
+<li><b>Выходной слой</b> — выдаёт финальный результат. Ранее поступившая информация собирается в единый пазл, поэтому пользователь получает ответ на вопрос, отрисованное изображение или проверенный текст.</li>
+</ul>
+<img src="img/skhema-sloev-neyroseti.png" alt="Схема структуры нейросети: входной, скрытые и выходной слои" width="2000" height="1400" loading="lazy">
+<h2 id="b3">Ключевые понятия</h2>
+<p>Несколько терминов, которые пригодятся дальше:</p>
+<ul>
+<li><b>Слои</b> — группы узлов, объединённые по этапу обработки: входной, скрытый, выходной.</li>
+<li><b>Узлы (нейроны)</b> — отдельные вычислительные элементы сети (на схеме это круги).</li>
+<li><b>Веса связей</b> — числовые коэффициенты при связях между узлами (на схеме это стрелки); определяют силу влияния входа на выход.</li>
+<li><b>Смещение</b> (иногда его неточно называют «весом узла») — своеобразный порог: насколько легко этому нейрону «сработать». Нейрон суммирует все входы, умноженные на веса связей, прибавляет смещение и решает, передавать ли сигнал дальше.</li>
+</ul>
+<h2 id="b4">Аналогия и пример</h2>
+<div class="box">Представьте команду, где каждый человек передаёт другому оценки по шкале от 1 до 10 по разным признакам. <b>Вес связи — это «насколько я доверяю мнению этого коллеги»</b>: если доверяю сильно, его оценку почти не меняю; если слабо — почти не учитываю. А <b>смещение узла — это личная планка самого человека</b>: «я соглашусь, только если общая сумма будет выше 7».</div>
+<h2 id="b5">Попробуйте сами: нейрон-«гулялка»</h2>
+<p>Один нейрон решает, идти ли гулять. Галочки — это входы (условие есть или нет), ползунки «важность» — веса связей, а «личная планка» — смещение.</p>
+<div class="demo" id="nd">
+<p class="demo-h"><b>Идти ли гулять?</b></p>
+<div class="row"><label><input type="checkbox" data-x checked> Солнечно</label><label>важность <input type="range" data-w min="-3" max="3" step="1" value="2" aria-label="Важность: солнечно"><output></output></label></div>
+<div class="row"><label><input type="checkbox" data-x checked> Есть свободное время</label><label>важность <input type="range" data-w min="-3" max="3" step="1" value="2" aria-label="Важность: свободное время"><output></output></label></div>
+<div class="row"><label><input type="checkbox" data-x> Друзья зовут</label><label>важность <input type="range" data-w min="-3" max="3" step="1" value="1" aria-label="Важность: друзья зовут"><output></output></label></div>
+<div class="row"><label>Личная планка (смещение) <input type="range" data-b min="-5" max="5" step="1" value="-3" aria-label="Смещение"><output></output></label></div>
+<p class="demo-f"></p>
+<p class="demo-r" aria-live="polite"></p>
+</div>
+<div class="box"><b>Что смотреть:</b> уберите галочки — сумма упадёт. Сделайте вес отрицательным — условие начнёт «тормозить» решение. Опустите планку ниже — нейрону станет труднее сработать. Обучение сети — это автоматический подбор таких весов и смещений.</div>
+<section class="quiz" aria-label="Проверьте себя"><h2>Проверьте себя</h2><div class="qq"><p class="qt">1. Что такое вес связи?</p><div class="qo"><button type="button">Размер файла с нейроном</button><button type="button" data-ok="1">Число, определяющее, насколько сильно вход влияет на нейрон</button><button type="button">Номер слоя в сети</button></div><p class="qe" hidden>Вес показывает силу влияния сигнала: чем он больше, тем сильнее вход «давит» на нейрон.</p></div><div class="qq"><p class="qt">2. Что делает входной слой?</p><div class="qo"><button type="button" data-ok="1">Принимает данные и передаёт дальше</button><button type="button">Выдаёт финальный ответ</button><button type="button">Хранит все знания сети</button></div><p class="qe" hidden>Входной слой только принимает данные в виде чисел; вычисления идут в следующих слоях.</p></div><div class="qq"><p class="qt">3. Смещение — это…</p><div class="qo"><button type="button">Скорость обучения</button><button type="button" data-ok="1">Своеобразный порог срабатывания нейрона</button><button type="button">Количество слоёв</button></div><p class="qe" hidden>Смещение определяет, насколько легко нейрону «сработать».</p></div><p class="qs" aria-live="polite"></p></section><button type="button" class="readbtn" onclick="toggleRead(1)" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Отметить раздел прочитанным</span></button>
+ <div class="pager"><a href="index.html" rel="prev"><span><svg class="ic" aria-hidden="true"><use href="#i-left"/></svg> Что такое нейросеть?</span></a>
+ <a href="istoriya-neyrosetey.html" rel="next"><span>Как появилась и развивалась нейросеть <svg class="ic" aria-hidden="true"><use href="#i-right"/></svg></span></a></div></main>
+</div>
+<footer id="foot">НейроБукварь — нейросети и ИИ простыми словами<br><a class="lnk" href="o-proekte.html">О проекте</a></footer>
+<button id="top" class="toTop" aria-label="Наверх" title="Наверх"><svg class="ic" aria-hidden="true"><use href="#i-up"/></svg></button>
+
+<!-- Image Zoom Overlay -->
+<div id="imgOverlay" class="img-overlay">
+  <div class="img-overlay-content">
+    <img id="imgOverlayImg" class="img-overlay-img" alt="">
+    <button class="img-overlay-close" aria-label="Закрыть"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+</div>
+<script src="search-data.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>
